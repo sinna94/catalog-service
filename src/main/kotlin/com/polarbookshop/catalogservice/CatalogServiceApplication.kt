@@ -1,11 +1,13 @@
 package com.polarbookshop.catalogservice
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.context.properties.ConfigurationPropertiesScan
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class CatalogServerApplication
+@ConfigurationPropertiesScan
+class CatalogServiceApplication
 
 fun main(args: Array<String>) {
-    runApplication<CatalogServerApplication>(*args)
+    runApplication<CatalogServiceApplication>(*args)
 }
