@@ -4,6 +4,7 @@ import com.polarbookshop.catalogservice.domain.Book
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.TestConstructor
 import org.springframework.test.web.reactive.server.WebTestClient
 
@@ -11,13 +12,14 @@ import org.springframework.test.web.reactive.server.WebTestClient
     webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
 )
 @TestConstructor(autowireMode = TestConstructor.AutowireMode.ALL)
+@ActiveProfiles("integration")
 class CatalogServiceApplicationTests(
     private val webTestClient: WebTestClient
 ) {
 
     @Test
     fun whenPostRequestThenBookCreated() {
-        val expectedBook = Book("1231231231", "Title", "Author", 9.90)
+        val expectedBook = Book(isbn = "1231231231", title = "Title", author = "Author", price = 9.90, publisher = "Publisher")
 
         webTestClient
             .post()

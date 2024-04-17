@@ -15,7 +15,7 @@ class BookJsonTest {
 
     @Test
     fun testSerialize() {
-        val book = Book("1234567890", "Title", "Author", 9.90)
+        val book = Book(isbn = "1234567890", title = "Title", author = "Author", price = 9.90, publisher = "Publisher")
         val jsonContent = json.write(book)
         assertThat(jsonContent).extractingJsonPathStringValue("@.isbn")
             .isEqualTo(book.isbn)
@@ -25,6 +25,7 @@ class BookJsonTest {
             .isEqualTo(book.author)
         assertThat(jsonContent).extractingJsonPathNumberValue("@.price")
             .isEqualTo(book.price)
+        assertThat(jsonContent).extractingJsonPathStringValue("@.publisher")
     }
 
     @Test
@@ -34,10 +35,11 @@ class BookJsonTest {
                 "isbn": "1234567890",
                 "title": "Title",
                 "author": "Author",
-                "price": 9.90
+                "price": 9.90,
+                "publisher": "Publisher"
             }
         """.trimIndent()
-        val book = Book("1234567890", "Title", "Author", 9.90)
+        val book = Book(isbn = "1234567890", title = "Title", author = "Author", price = 9.90, publisher = "Publisher")
         assertThat(json.parse(content)).usingRecursiveComparison().isEqualTo(book)
     }
 }

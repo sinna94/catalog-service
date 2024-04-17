@@ -1,0 +1,16 @@
+version: '3'
+services:
+  db:
+    image: postgres:16
+    container_name: polar-postgres
+    environment:
+      POSTGRES_DB: polardb_catalog
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - polar-postgres:/var/lib/postgresql/data
+volumes:
+  polar-postgres:
+    driver: local
