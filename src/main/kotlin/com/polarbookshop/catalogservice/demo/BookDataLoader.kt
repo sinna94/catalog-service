@@ -8,7 +8,7 @@ import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Component
 
 @Component
-@Profile("testdata")
+@Profile("test-data")
 class BookDataLoader(
     private val bookRepository: BookRepository,
 ) {
