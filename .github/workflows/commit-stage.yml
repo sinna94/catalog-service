@@ -39,6 +39,10 @@ jobs:
         run: |
           chmod +x gradlew
           ./gradlew build
+      - name: Validate Kubernetes manifests
+        uses: docker://ghcr.io/yannh/kubeconform:latest
+        command: |
+            kubeconform -strict polar-deployment/kubernetes/*.yml
   package:
     name: Package and Publish
     if: ${{ github.ref == 'refs/heads/main' }}
