@@ -43,7 +43,7 @@ jobs:
         uses: docker://ghcr.io/yannh/kubeconform:latest
         with:
           entrypoint: '/kubeconform'
-          args: "-summary -output json polar-deployment/kubernetes/*.yml"
+          args: "-summary -output json polar-deployment/kubernetes"
   package:
     name: Package and Publish
     if: ${{ github.ref == 'refs/heads/main' }}
