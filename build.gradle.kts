@@ -56,7 +56,7 @@ configurations {
 }
 
 tasks.withType(BootRun::class.java) {
-    systemProperty("spring.config.active", "testdata")
+    systemProperty("spring.config.active", "test-data")
 }
 
 tasks.withType<KotlinCompile> {
