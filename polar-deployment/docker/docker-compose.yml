@@ -7,7 +7,6 @@ services:
     container_name: "catalog-service"
     ports:
       - "8080:8080"
-      - "8001:8001"
     environment:
       - BPL_JVM_THREAD_COUNT=50
       - BPL_DEBUG_ENABLED=true
@@ -35,3 +34,8 @@ services:
       - POSTGRES_USER=user
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=polardb_catalog
+  polar-redis:
+    image: "redis:7.0"
+    container_name: "polar-redis"
+    ports:
+      - "6379:6379"

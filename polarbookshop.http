@@ -8,3 +8,9 @@ Content-Type: application/json
 
 ###
 GET localhost:8080/books/1234567891
+
+###
+GET localhost:8081/books
+
+###
+GET localhost:8081/orders
