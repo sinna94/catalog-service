@@ -19,6 +19,7 @@ repositories {
 }
 
 extra["springCloudVersion"] = "2023.0.1"
+extra["testcontainersVersion"] = "1.17.3"
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
@@ -26,11 +27,14 @@ dependencies {
     implementation("org.springframework.cloud:spring-cloud-starter-circuitbreaker-reactor-resilience4j")
     implementation("org.springframework.boot:spring-boot-starter-data-redis-reactive")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    implementation("org.springframework.session:spring-session-data-redis")
+    testImplementation("org.testcontainers:junit-jupiter")
 }
 
 dependencyManagement {
     imports {
         mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
+        mavenBom("org.testcontainers:testcontainers-bom:${property("testcontainersVersion")}")
     }
 }
 
