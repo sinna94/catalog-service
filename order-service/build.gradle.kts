@@ -26,6 +26,7 @@ dependencies {
     implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
+    implementation("org.springframework.cloud:spring-cloud-stream-binder-rabbit")
     runtimeOnly("org.postgresql:postgresql")
     runtimeOnly("org.postgresql:r2dbc-postgresql")
     runtimeOnly("org.flywaydb:flyway-core")
@@ -38,6 +39,15 @@ dependencies {
     testImplementation("org.testcontainers:postgresql")
     testImplementation("org.testcontainers:r2dbc")
     testImplementation("com.squareup.okhttp3:mockwebserver")
+    testImplementation("org.springframework.cloud:spring-cloud-stream-test-binder")
+}
+
+extra["springCloudVersion"] = "2023.0.1"
+
+dependencyManagement {
+    imports {
+        mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
+    }
 }
 
 tasks.withType<KotlinCompile> {

@@ -14,3 +14,28 @@ GET localhost:8081/books
 
 ###
 GET localhost:8081/orders
+
+
+###
+POST localhost:8080/books
+Content-Type: application/json
+
+{
+  "author": "Jon Sown",
+  "title": "All I don't know about the Arctic",
+  "isbn": "1234567897",
+  "price": 9.90,
+  "publisher": "Polarsophia"
+}
+
+###
+POST localhost:9002/orders
+Content-Type: application/json
+
+{
+  "isbn": "1234567897",
+  "quantity": 3
+}
+
+###
+GET localhost:9002/orders
